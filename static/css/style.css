@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.alert.danger {
+    background-color: #f8d7da;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-fill {
+    background-color: #28a745;
+    height: 100%;
+    border-radius: 10px;
+}
