@@ -1,11 +1,20 @@
+import os
 from sqlalchemy import create_engine, Column, String, Float
 from sqlalchemy.orm import declarative_base, sessionmaker
-import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "dados.db")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(f"sqlite:///{DB_PATH}", echo=False)
+if DATABASE_URL:
+    # Render fornece postgres://, mas SQLAlchemy prefere postgresql://
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+    engine = create_engine(DATABASE_URL)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DB_PATH = os.path.join(BASE_DIR, "dados.db")
+    engine = create_engine(f"sqlite:///{DB_PATH}", echo=False)
+
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
 
